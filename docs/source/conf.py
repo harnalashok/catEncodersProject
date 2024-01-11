@@ -7,7 +7,7 @@ import os
 import sys
 
 # Add the directory containing the Python file to sys.path
-sys.path.insert(0, os.path.abspath('/home/ashok/docs'))
+sys.path.insert(0, os.path.abspath('../..'))
 
 project = 'Documentation of package catencfamily'
 copyright = '2024, Prof. Ashok Harnal'
