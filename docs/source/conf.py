@@ -6,11 +6,7 @@
 import os
 import sys
 
-# Get the directory of the current file
-current_file_dir = os.path.abspath(os.path.dirname(__file__))
-
-# Add the 'docs/source' directory to the Python path
-sys.path.insert(0, os.path.join(current_file_dir, 'docs/source'))
+sys.path.insert(0, os.path.abspath('../..'))  
 
 project = 'Sample'
 copyright = '2024, Prof. Ashok Harnal'
