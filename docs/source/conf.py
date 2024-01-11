@@ -9,6 +9,10 @@ import sys
 # Add the directory containing the Python file to sys.path
 sys.path.insert(0, os.path.abspath('../..'))
 
+# Install dependencies
+import subprocess
+subprocess.call(['pip', 'install', 'pandas'])
+
 project = 'Documentation of package catencfamily'
 copyright = '2024, Prof. Ashok Harnal'
 author = 'Prof. Ashok Harnal'
