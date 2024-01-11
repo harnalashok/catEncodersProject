@@ -3,7 +3,7 @@ requires = ["flit_core >=3.2,<4"]
 build-backend = "flit_core.buildapi"
 
 [tool.flit.metadata]
-module = "docs/source/"  # Replace with the actual module path of your documentation
+module = "docs/source/modules.rst"  # Replace with the actual module path of your documentation
 
 [project]
 name = "catEncodersProject"
