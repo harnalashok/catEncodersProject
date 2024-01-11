@@ -6,14 +6,14 @@
 import os
 import sys
 
-sys.path.insert(0, os.path.abspath('/home/ashok/hosting_sample'))
+sys.path.insert(0, os.path.abspath('/docs/source'))
 print(sys.path)
 
 sys.version_info = (3, 10, 13, 'final', 0) 
 
 project = 'Sample'
-copyright = '2024, Anjanay'
-author = 'Anjanay'
+copyright = '2024, Prof. Ashok Harnal'
+author = 'Prof. Ashok Harnal'
 release = '1.0.1'
 
 # -- General configuration ---------------------------------------------------
