@@ -12,6 +12,8 @@ sys.path.insert(0, os.path.abspath('../..'))
 # Install dependencies
 import subprocess
 subprocess.call(['pip', 'install', 'pandas'])
+subprocess.call(['pip', 'install', 'networkx'])
+subprocess.call(['pip', 'install', 'scipy'])
 
 project = 'Documentation of package catencfamily'
 copyright = '2024, Prof. Ashok Harnal'
