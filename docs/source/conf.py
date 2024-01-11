@@ -64,3 +64,6 @@ html_context = {
 # Add this configuration to link to GitHub source code
 viewcode_follow_imported_members = True
 viewcode_enable_source = True
+
+# Suppress specific Sphinx warnings
+suppress_warnings = ['autodoc.error', 'autodoc.warning', 'autodoc.docstring']
