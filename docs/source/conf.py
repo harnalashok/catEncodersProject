@@ -6,10 +6,11 @@
 import os
 import sys
 
-sys.path.insert(0, os.path.abspath('/docs/source'))
-print(sys.path)
+# Get the directory of the current file
+current_file_dir = os.path.abspath(os.path.dirname(__file__))
 
-sys.version_info = (3, 10, 13, 'final', 0) 
+# Add the 'docs/source' directory to the Python path
+sys.path.insert(0, os.path.join(current_file_dir, 'docs/source'))
 
 project = 'Sample'
 copyright = '2024, Prof. Ashok Harnal'
@@ -46,8 +47,8 @@ autodoc_default_options = {
 # Link to the GitHub repository
 html_context = {
     'display_github': True,
-    'github_user': 'your_github_user',
-    'github_repo': 'your_repo_name',
+    'github_user': 'harnalashok',
+    'github_repo': 'catEncoderProject',
     'github_version': 'main/',
     'github_url': 'https://github.com/harnalashok/catEncodersProject',
 }
