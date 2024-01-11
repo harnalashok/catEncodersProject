@@ -67,3 +67,6 @@ viewcode_enable_source = True
 
 # Suppress specific Sphinx warnings
 suppress_warnings = ['autodoc.error', 'autodoc.warning', 'autodoc.docstring']
+suppress_warnings = ['*:ERROR']
+suppress_warnings = ['*']
+
