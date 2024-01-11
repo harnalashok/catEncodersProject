@@ -14,6 +14,11 @@ import subprocess
 subprocess.call(['pip', 'install', 'pandas'])
 subprocess.call(['pip', 'install', 'networkx'])
 subprocess.call(['pip', 'install', 'scipy'])
+subprocess.call(['pip', 'install', 'cdlib'])
+subprocess.call(['pip', 'install', 'scikit-learn'])
+subprocess.call(['pip', 'install', 'matplotlib'])
+subprocess.call(['pip', 'install', 'pathlib'])
+
 
 project = 'Documentation of package catencfamily'
 copyright = '2024, Prof. Ashok Harnal'
