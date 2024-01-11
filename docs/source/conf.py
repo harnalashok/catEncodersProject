@@ -6,8 +6,10 @@
 import os
 import sys
 
-# Add the directory containing the Python file to sys.path
 sys.path.insert(0, os.path.abspath('/home/ashok/hosting_sample'))
+print(sys.path)
+
+sys.version_info = (3, 10, 13, 'final', 0) 
 
 project = 'Sample'
 copyright = '2024, Anjanay'
