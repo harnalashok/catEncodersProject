@@ -11,7 +11,6 @@ Welcome to Documentation of pacakage catencfamily's documentation!
    :caption: Contents:
 
    modules
-   utils
 
 Indices and tables
 ==================
