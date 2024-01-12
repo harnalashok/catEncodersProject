@@ -1,9 +1,12 @@
 # 24th Dec, 2023
 """
 References:
-- Coding standard: https://gist.github.com/nateGeorge/5455d2c57fb33c1ae04706f2dc4fee01
-- Developing sklearn estimators: https://scikit-learn.org/stable/developers/develop.html 
-- Project template: https://github.com/scikit-learn-contrib/project-template/    
+Coding standard: https://gist.github.com/nateGeorge/5455d2c57fb33c1ae04706f2dc4fee01
+    
+Developing sklearn estimators: https://scikit-learn.org/stable/developers/develop.html 
+    
+Project template: https://github.com/scikit-learn-contrib/project-template/    
+    
 """
 
 # 1.0 Libraries
@@ -66,7 +69,99 @@ class CatEncodersFamily(BaseEstimator, TransformerMixin):
                  mergelevelsincols = None,mergethreshold = None, replaceby = '99999',
                  avoidInteractionFeatures = None, multigraph = False, random_state = None):
         
-        
+        """
+        Parameters
+        ----------
+        pathToStoreProgress : string; As dictionaries are created 
+                              to map cat-column levels to different 
+                              centrality measures, a file records the progress.
+                              The progress file is placed in this folder. 
+                              Default folder is <currentfolder>/allmodels/progress/ 
+        modelsPath : string; When, n_iter > 1, dictionaries created to map cat-column
+                     levels to difft centrality measures, per iteration, are saved 
+                     here in .pkl file. Before saving, dictionaries are transformed
+                     to pandas DataFrame and then saved. Such DataFrames are, at times,
+                     being called as models in this help. Default modelsPath folder is 
+                     <currentfolder>/allmodels/models/ 
+        cMeasures : list; It specifies what all centrality measures are to be calculated.
+                    One can also specify a function object that calculates some centrality
+                    measure. The default cMeasures is [1, 1, 1, 0, None, 1, 1].
+            
+                    Presence of 1 or 0 in cMeasures implies:
+                    Ist   1            calculate degree centrality
+                    IInd  1            calculate eigenvector centrality
+                    IIIrd 1            calculate pagerank centrality,
+                    IVth  1            calculate clustering coefficient,
+                    Vth  func_obj      for user specified function object
+                                       to calculate centrality. It requires
+                                       that IV element be also 1. If IV elem
+                                       is 0, then func_obj will not be 
+                                       evaluated.
+                    VI    1            calculate betweenness centrality
+                    VII   1            is for discovering communities (Which node
+                                       belongs to which community? ) and community
+                                       characteristics: density and avg_embeddedness.
+                               
+                          0            at any pos means not to calculate that 
+                                       specific measure
+                
+        noOfColsToConcat : int; Before centrality measures are calculated, new columns
+                           are created by taking as many cat columns at a time as noOfColsToConcat
+                           Presently only a value of 2 is allowed. That is, if there are 3 cat cols
+                           ['a','b','c'] new concatenated cols will be: ['a+b', 'a+c', 'b+c']
+
+        k : int; If k is not None use k node samples to estimate betweenness.
+            The value of k <= n where n is the number of nodes in the graph.
+            Higher values give better approximation. Only relevant if betweenness centrality
+            is to be calculated.
+   
+        n_iter : int; The number of times cMeasures are to be calculated over different samples of data,
+                 Default is 1 when cMeasures is calculated over complete data.
+         
+        sampsize : float; Sample size of data over which cMeasures to be calculated when n_iter > 1.
+                   The default is 0.8.
+           
+        avg : boolean; When n_iter > 1, each one of cMeasures is calcuated n_iter times. To calculate
+              a final value either average or median of each cMeasures is taken.
+              If avg is True (the default) then for each cMeasures (say, pagerank Centrality)
+              avg over all n_iter is taken; if False, median is computed.
+          
+        saveGraph : boolean; Should network-graph files be saved to disk or not. 
+                    The default is False.
+            
+        cutoff: int; If the number of levels in any one of the cat columns (or concatenated cat
+                cols) is below cutoff, ignore that cat col. (see _cleanup())
+                        
+        verbose : int; Intensity of msgs to be displayed. Presently, this parameter may not 
+                  display much control over the display of msg(s). The default is 3.
+            
+        random_state: int; Controls the shuffling applied to the data before applying the 
+                      train_test_split. Pass an int for reproducible output across multiple 
+                      function calls.
+                      
+        mapDictPath: string; Name of folder where dictionaries are kept that map existing levels
+                     to 'replaceby' values.                
+                      
+        mergelevelsincols: list of str; List of columns whose levels need to be merged through multiple
+                           iterations. Certain large datasets have few cols with very large 
+                           number of levels. This is a list of such columns. Presently only one
+                           column is supported.
+        mergethreshold: list of floats : Merge threshold levels for each column, listed in 
+                                         mergelevelsincols    
+        replaceby: String integer; Name of new level when multiple levels are merged. Default
+                   '99999'
+                   
+        avoidInteractionFeatures: List; For col names listed here, avoid the combination with 
+                                  created interaction features  
+        multigraph: Bipartite to unipartite projection yields a simple graph or multigraph.
+                    It will yield a multigraph when multigraph = True                          
+                  
+        Returns
+        -------
+        None.
+        """
+
+                     
         self.cMeasures = cMeasures
         self.noOfColsToConcat = noOfColsToConcat
         self.pathToStoreProgress = pathToStoreProgress # If none, folders are created below currrent folder
