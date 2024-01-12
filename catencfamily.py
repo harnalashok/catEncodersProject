@@ -74,14 +74,15 @@ class CatEncodersFamily(BaseEstimator, TransformerMixin):
                  avoidInteractionFeatures = None, multigraph = False, random_state = None):
         
         """
+
         Parameters
         ----------
-        pathToStoreProgress : string; As dictionaries are created 
-                              to map cat-column levels to different 
-                              centrality measures, a file records the progress.
-                              The progress file is placed in this folder. 
-                              Default folder is <currentfolder>/allmodels/progress/ 
-        modelsPath : string; When, n_iter > 1, dictionaries created to map cat-column
+        pathToStoreProgress :string; As dictionaries are created 
+                             to map cat-column levels to different 
+                             centrality measures, a file records the progress.
+                             The progress file is placed in this folder. 
+                             Default folder is <currentfolder>/allmodels/progress/ 
+        modelsPath : string; When, n_iter >1, dictionaries created to map cat-column
                      levels to difft centrality measures, per iteration, are saved 
                      here in .pkl file. Before saving, dictionaries are transformed
                      to pandas DataFrame and then saved. Such DataFrames are, at times,
@@ -89,8 +90,8 @@ class CatEncodersFamily(BaseEstimator, TransformerMixin):
                      <currentfolder>/allmodels/models/ 
         cMeasures : list; It specifies what all centrality measures are to be calculated.
                     One can also specify a function object that calculates some centrality
-                    measure. The default cMeasures is [1, 1, 1, 0, None, 1, 1].
-            
+                    measure. The default cMeasures is [1,1,1,0,None,1,1].
+                    
                     Presence of 1 or 0 in cMeasures implies:
                     Ist   1            calculate degree centrality
                     IInd  1            calculate eigenvector centrality
@@ -105,40 +106,40 @@ class CatEncodersFamily(BaseEstimator, TransformerMixin):
                     VII   1            is for discovering communities (Which node
                                        belongs to which community? ) and community
                                        characteristics: density and avg_embeddedness.
-                               
-                          0            at any pos means not to calculate that 
+                                       
+                           0           at any pos means not to calculate that 
                                        specific measure
-                
+                    
         noOfColsToConcat : int; Before centrality measures are calculated, new columns
                            are created by taking as many cat columns at a time as noOfColsToConcat
                            Presently only a value of 2 is allowed. That is, if there are 3 cat cols
                            ['a','b','c'] new concatenated cols will be: ['a+b', 'a+c', 'b+c']
 
         k : int; If k is not None use k node samples to estimate betweenness.
-            The value of k <= n where n is the number of nodes in the graph.
-            Higher values give better approximation. Only relevant if betweenness centrality
-            is to be calculated.
-   
+           The value of k <= n where n is the number of nodes in the graph.
+           Higher values give better approximation. Only relevant if betweenness centrality
+           is to be calculated.
+           
         n_iter : int; The number of times cMeasures are to be calculated over different samples of data,
                  Default is 1 when cMeasures is calculated over complete data.
-         
+                 
         sampsize : float; Sample size of data over which cMeasures to be calculated when n_iter > 1.
                    The default is 0.8.
-           
+                   
         avg : boolean; When n_iter > 1, each one of cMeasures is calcuated n_iter times. To calculate
               a final value either average or median of each cMeasures is taken.
               If avg is True (the default) then for each cMeasures (say, pagerank Centrality)
               avg over all n_iter is taken; if False, median is computed.
-          
+              
         saveGraph : boolean; Should network-graph files be saved to disk or not. 
                     The default is False.
-            
-        cutoff: int; If the number of levels in any one of the cat columns (or concatenated cat
-                cols) is below cutoff, ignore that cat col. (see _cleanup())
-                        
+                    
+        cutoff: int; If number of levels in any one of the cat columns (or concatenated cat
+                cols) are below cutoff, ignore that cat col. (see _cleanup())
+                    
         verbose : int; Intensity of msgs to be displayed. Presently, this parameter may not 
-                  display much control over the display of msg(s). The default is 3.
-            
+                  display much control over display of msg(s). The default is 3.
+        
         random_state: int; Controls the shuffling applied to the data before applying the 
                       train_test_split. Pass an int for reproducible output across multiple 
                       function calls.
@@ -155,15 +156,18 @@ class CatEncodersFamily(BaseEstimator, TransformerMixin):
         replaceby: String integer; Name of new level when multiple levels are merged. Default
                    '99999'
                    
-        avoidInteractionFeatures: List; For col names listed here, avoid the combination with 
+        avoidInteractionFeatures: List; For col names listed here, avoid combination with 
                                   created interaction features  
-        multigraph: Bipartite to unipartite projection yields a simple graph or multigraph.
-                    It will yield a multigraph when multigraph = True                          
+        multigraph: Bipartite to unipartite projection yields simple graph or multigraph.
+                    It will yield multigraph when multigraph = True                          
                   
+
         Returns
         -------
         None.
+
         """
+
 
                      
         self.cMeasures = cMeasures
