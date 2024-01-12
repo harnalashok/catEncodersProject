@@ -74,15 +74,14 @@ class CatEncodersFamily(BaseEstimator, TransformerMixin):
                  avoidInteractionFeatures = None, multigraph = False, random_state = None):
         
         """
-
         Parameters
         ----------
-        pathToStoreProgress :string; As dictionaries are created 
+        pathToStoreProgress : string; As dictionaries are created 
                              to map cat-column levels to different 
                              centrality measures, a file records the progress.
                              The progress file is placed in this folder. 
                              Default folder is <currentfolder>/allmodels/progress/ 
-        modelsPath : string; When, n_iter >1, dictionaries created to map cat-column
+        modelsPath : string; When, n_iter > 1, dictionaries created to map cat-column
                      levels to difft centrality measures, per iteration, are saved 
                      here in .pkl file. Before saving, dictionaries are transformed
                      to pandas DataFrame and then saved. Such DataFrames are, at times,
@@ -93,27 +92,28 @@ class CatEncodersFamily(BaseEstimator, TransformerMixin):
                     measure. The default cMeasures is [1,1,1,0,None,1,1].
                     
                     Presence of 1 or 0 in cMeasures implies:
-                    Ist   1		calculate degree centrality
-                    IInd  1		calculate eigenvector centrality
-                    IIIrd 1             calculate pagerank centrality,
-                    IVth  1		calculate clustering coefficient,
-                    Vth  func_obj		for user specified function object
-                                       		to calculate centrality. It requires
-                            	       		that IV element be also 1. If IV elem
-                                       		is 0, then func_obj will not be evaluated.
-                    VI    1		calculate betweenness centrality
-                    VII   1		is for discovering communities (Which node
-                                        belongs to which community? ) and community
-                                        characteristics: density and avg_embeddedness.
+                    Ist   1            calculate degree centrality
+                    IInd  1            calculate eigenvector centrality
+                    IIIrd 1            calculate pagerank centrality,
+                    IVth  1            calculate clustering coefficient,
+                    Vth  func_obj      for user specified function object
+                                       to calculate centrality. It requires
+                                       that IV element be also 1. If IV elem
+                                       is 0, then func_obj will not be 
+                                       evaluated.
+                    VI    1            calculate betweenness centrality
+                    VII   1            is for discovering communities (Which node
+                                       belongs to which community? ) and community
+                                       characteristics: density and avg_embeddedness.
                                        
-                          0		at any pos means not to calculate that 
-                                        specific measure
+                           0           at any pos means not to calculate that 
+                                       specific measure
                     
         noOfColsToConcat : int; Before centrality measures are calculated, new columns
                            are created by taking as many cat columns at a time as noOfColsToConcat
                            Presently only a value of 2 is allowed. That is, if there are 3 cat cols
                            ['a','b','c'] new concatenated cols will be: ['a+b', 'a+c', 'b+c']
-
+    
         k : int; If k is not None use k node samples to estimate betweenness.
            The value of k <= n where n is the number of nodes in the graph.
            Higher values give better approximation. Only relevant if betweenness centrality
@@ -160,11 +160,10 @@ class CatEncodersFamily(BaseEstimator, TransformerMixin):
         multigraph: Bipartite to unipartite projection yields simple graph or multigraph.
                     It will yield multigraph when multigraph = True                          
                   
-
+    
         Returns
         -------
         None.
-
         """
 
                      
