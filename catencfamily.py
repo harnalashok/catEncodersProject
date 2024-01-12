@@ -73,7 +73,7 @@ class CatEncodersFamily(BaseEstimator, TransformerMixin):
                  mergelevelsincols = None,mergethreshold = None, replaceby = '99999',
                  avoidInteractionFeatures = None, multigraph = False, random_state = None):
         
-        """
+       """
 
         Parameters
         ----------
@@ -93,22 +93,21 @@ class CatEncodersFamily(BaseEstimator, TransformerMixin):
                     measure. The default cMeasures is [1,1,1,0,None,1,1].
                     
                     Presence of 1 or 0 in cMeasures implies:
-                    Ist   1            calculate degree centrality
-                    IInd  1            calculate eigenvector centrality
-                    IIIrd 1            calculate pagerank centrality,
-                    IVth  1            calculate clustering coefficient,
-                    Vth  func_obj      for user specified function object
-                                       to calculate centrality. It requires
-                                       that IV element be also 1. If IV elem
-                                       is 0, then func_obj will not be 
-                                       evaluated.
-                    VI    1            calculate betweenness centrality
-                    VII   1            is for discovering communities (Which node
-                                       belongs to which community? ) and community
-                                       characteristics: density and avg_embeddedness.
+                    Ist   1		calculate degree centrality
+                    IInd  1		calculate eigenvector centrality
+                    IIIrd 1             calculate pagerank centrality,
+                    IVth  1		calculate clustering coefficient,
+                    Vth  func_obj		for user specified function object
+                                       		to calculate centrality. It requires
+                            	       		that IV element be also 1. If IV elem
+                                       		is 0, then func_obj will not be evaluated.
+                    VI    1		calculate betweenness centrality
+                    VII   1		is for discovering communities (Which node
+                                        belongs to which community? ) and community
+                                        characteristics: density and avg_embeddedness.
                                        
-                           0           at any pos means not to calculate that 
-                                       specific measure
+                          0		at any pos means not to calculate that 
+                                        specific measure
                     
         noOfColsToConcat : int; Before centrality measures are calculated, new columns
                            are created by taking as many cat columns at a time as noOfColsToConcat
@@ -167,6 +166,7 @@ class CatEncodersFamily(BaseEstimator, TransformerMixin):
         None.
 
         """
+
 
 
                      
