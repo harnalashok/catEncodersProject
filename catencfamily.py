@@ -73,7 +73,7 @@ class CatEncodersFamily(BaseEstimator, TransformerMixin):
                  mergelevelsincols = None,mergethreshold = None, replaceby = '99999',
                  avoidInteractionFeatures = None, multigraph = False, random_state = None):
         
-       """
+        """
 
         Parameters
         ----------
@@ -166,8 +166,6 @@ class CatEncodersFamily(BaseEstimator, TransformerMixin):
         None.
 
         """
-
-
 
                      
         self.cMeasures = cMeasures
