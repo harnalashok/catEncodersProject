@@ -1,13 +1,13 @@
 # 10th Jan, 2024
 """
-References:
-Coding standard:
+References
+Coding standard
     https://gist.github.com/nateGeorge/5455d2c57fb33c1ae04706f2dc4fee01
     
-Developing sklearn estimators:
+Developing sklearn estimators
     https://scikit-learn.org/stable/developers/develop.html 
     
-Project template:
+Project template
     https://github.com/scikit-learn-contrib/project-template/    
     
 """
